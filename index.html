@@ -977,7 +977,7 @@
     }
   </script>
 
-  <!-- WorksWheel 3D Drum Reel Initialization -->
+<!-- WorksWheel 3D Drum Reel Initialization -->
   <script type="module">
     import { initWorksWheel, DEFAULT_WORKS } from './works-wheel.js';
 
@@ -989,10 +989,9 @@
           label: "Trabajos '26",
           action: "Ver",
           onSelect: (index, item) => {
-            if (item && item.link) {
-              window.open(item.link, '_blank');
-            } else if (window.openProjectModal) {
-              window.openProjectModal(item);
+            const url = item.link || item.href;
+            if (url) {
+              window.open(url, "_blank", "noopener,noreferrer");
             }
           }
         });
