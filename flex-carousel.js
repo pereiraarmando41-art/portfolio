@@ -4,52 +4,20 @@ export const photo = (id) => `https://images.unsplash.com/${id}?w=1200&q=80&auto
 
 export const DEFAULT_ITEMS = [
   {
-    src: 'Project Images/Cafe Website.png',
-    alt: 'Cafe Website',
-    title: 'Cafe Website',
-    subtitle: 'Editorial Coffee House Experience',
-    description: 'A full-stack cafe management system with an admin portal for orders, menu, and reservations',
-    link: 'https://mochaandmiso.web.app/'
+    src: 'assets/digital-twin.png',
+    alt: 'Gemelo Digital LINTI',
+    title: 'Digital Twin & Eficiencia Energética',
+    subtitle: 'Laboratorio LINTI — UNLP',
+    description: 'Gemelo digital predictivo en Python para optimización del llenado de cisternas de 1400 m³ e integración con parque solar.',
+    link: 'https://www.linkedin.com/in/armando-pereira-2810a3278/'
   },
   {
-    src: 'Project Images/Design Studio.png',
-    alt: 'Design Studio',
-    title: 'Design Studio',
-    subtitle: 'Creative Agency & Brand Identity',
-    description: 'A bold design studio website built to showcase creative services, brand identity, and digital experiences',
-    link: 'https://echo-design-studio-ex.vercel.app/'
-  },
-  {
-    src: 'Project Images/Photographer Portfolio.png',
-    alt: 'Photographer Portfolio',
-    title: 'Photographer Portfolio',
-    subtitle: 'Editorial & Analog Photography',
-    description: 'An analog & editorial photography portfolio showcasing timeless visual stories',
-    link: 'https://julianvance.vercel.app/'
-  },
-  {
-    src: 'Project Images/Portfolio Design.png',
-    alt: 'Portfolio Design',
-    title: 'Portfolio Design',
-    subtitle: 'Minimalist Creative Developer Portfolio',
-    description: 'A sleek, high-performance portfolio crafted with modern typography, fluid interactions, and curated creative work.',
-    link: 'https://echooo.web.app/'
-  },
-  {
-    src: 'Project Images/Portfolio Website.png',
-    alt: 'Portfolio Website',
-    title: 'Portfolio Website',
-    subtitle: 'Personal Developer & Designer Portfolio',
-    description: 'A personal portfolio highlighting full-stack engineering, interactive UI components, and modern web craft.',
-    link: 'https://jishnumondal.vercel.app/'
-  },
-  {
-    src: 'Project Images/Sen Cruzo-Client Portfolio.png',
-    alt: 'Sen Cruzo',
-    title: 'Sen Cruzo',
-    subtitle: 'Luxury Architectural & Client Portfolio',
-    description: 'A bespoke editorial portfolio designed for high-profile client presentation, featuring immersive layouts and architectural visual storytelling.',
-    link: 'https://sencruzo.web.app/'
+    src: 'assets/n-queens.png',
+    alt: 'Solver N-Reinas Paralelo',
+    title: 'Resolución Paralela N-Reinas',
+    subtitle: 'MPI + Pthreads en C',
+    description: 'Algoritmo híbrido para clústeres distribuidos y multihilo con balanceo dinámico de carga y optimizaciones Bitwise Backtrack (Takaken).',
+    link: 'https://github.com/pereiraarmando41-art/Sistemas-Distribuidos-y-Paralelos'
   }
 ];
 
