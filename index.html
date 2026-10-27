@@ -989,7 +989,9 @@
           label: "Trabajos '26",
           action: "Ver",
           onSelect: (index, item) => {
-            if (window.openProjectModal) {
+            if (item && item.link) {
+              window.open(item.link, '_blank');
+            } else if (window.openProjectModal) {
               window.openProjectModal(item);
             }
           }
