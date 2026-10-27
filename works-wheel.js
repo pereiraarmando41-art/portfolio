@@ -59,16 +59,16 @@ export const DEFAULT_WORKS = [
     deliverables: ["Cola Generadora de Tareas", "Balanceo Dinámico de Carga", "Evaluación de Escalabilidad y Speedup"]
   },
   {
-    title: "Receptores Radio FM",
-    subtitle: "Bitácora & Prototipo de Sistemas Embebidos",
-    description: "Bitácora de desarrollo del prototipo de radio FM dual controlado mediante ESP8266, multiplexación de audio analógico CD4052, potenciómetro digital X9C103S y sintonizadores TEA5767 / HEX3653.",
-    image: "assets/about_starry_castle_hq.jpg",
-    src: "assets/about_starry_castle_hq.jpg",
-    href: "https://github.com/tpII/2026-f2-receptores-radio-fm",
-    link: "https://github.com/tpII/2026-f2-receptores-radio-fm",
+    title: "Receptores de Radio FM (HEX3653 y TEA5767) con ESP8266",
+    subtitle: "Sistemas Embebidos & Multiplexación",
+    description: "Prototipo de radio FM dual controlado por ESP8266 combinando módulos TEA5767/HEX3653, Relé HL-41, potenciómetro digital X9C103S y amplificador PAM8403.",
+    image: "assets/F2_Diagrama_Mejora_Maquetado.jpg",
+    src: "assets/F2_Diagrama_Mejora_Maquetado.jpg",
+    href: "https://github.com/pereiraarmando41-art",
+    link: "https://github.com/pereiraarmando41-art",
     stats: "ESP8266 • CD4052 • Potenciómetro X9C103S",
     tools: ["ESP8266", "C++", "Proteus", "KiCad", "FreeRTOS"],
-    deliverables: ["Bitácora de Proyecto", "Firmware C++", "Esquemático Hardware"]
+    deliverables: ["Firmware C++", "Esquemático Hardware", "Audio MUX Analógico"]
   }
 ];
 
