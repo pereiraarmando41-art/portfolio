@@ -997,18 +997,11 @@ function toggleService(index) {
     function startWorksWheel() {
       const container = document.getElementById('works-wheel-container');
       if (container) {
-        const wheelInstance = initWorksWheel(container, {
+        window.worksWheelInstance = initWorksWheel(container, {
           items: DEFAULT_WORKS,
           label: "Trabajos '26",
-          action: "Ver",
-          onSelect: (index, item) => {
-            const url = item.link || item.href;
-            if (url) {
-              window.open(url, "_blank", "noopener,noreferrer");
-            }
-          }
+          action: "Ver"
         });
-        window.worksWheelInstance = wheelInstance;
       }
     }
 

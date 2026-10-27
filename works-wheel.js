@@ -16,7 +16,6 @@ const INDEX = 0.038;
 const CULL = 1.6;
 
 const WHEEL_UNITS = 900;
-const DRAG_UNITS = 420;
 const SETTLE = 140;
 const EASE = 0.12;
 
@@ -47,7 +46,7 @@ export const DEFAULT_WORKS = [
     deliverables: ["Arquitectura Lógica IoT", "Batería Hidráulica Virtual", "Simulador Climático Estocástico"]
   },
   {
-    title: "N-Queens Parallel",
+    title: "Resolución Paralela del Problema de las N-Reinas (MPI + Pthreads)",
     subtitle: "Resolución Paralela del Problema de las N-Reinas",
     description: "Algoritmo híbrido (MPI + Pthreads) en C para clústeres distribuidos y multihilo con balanceo dinámico de carga, optimización Bitwise Backtrack (Takaken) y evaluación de métricas de rendimiento.",
     image: "assets/n-queens.png",
@@ -60,23 +59,25 @@ export const DEFAULT_WORKS = [
   },
   {
     title: "Receptores de Radio FM (HEX3653 y TEA5767) con ESP8266",
-    subtitle: "Sistemas Embebidos & Multiplexación",
+    subtitle: "Taller de Proyecto 2 // UNLP",
     description: "Prototipo de radio FM dual controlado por ESP8266 combinando módulos TEA5767/HEX3653, Relé HL-41, potenciómetro digital X9C103S y amplificador PAM8403.",
     image: "assets/F2_Diagrama_Mejora_Maquetado.jpg",
     src: "assets/F2_Diagrama_Mejora_Maquetado.jpg",
-    href: "https://github.com/pereiraarmando41-art",
-    link: "https://github.com/pereiraarmando41-art",
+    href: "https://github.com/tpII/2026-f2-receptores-radio-fm",
+    link: "https://github.com/tpII/2026-f2-receptores-radio-fm",
     stats: "ESP8266 • CD4052 • Potenciómetro X9C103S",
     tools: ["ESP8266", "C++", "Proteus", "KiCad", "FreeRTOS"],
-    deliverables: ["Firmware C++", "Esquemático Hardware", "Audio MUX Analógico"]
+    deliverables: ["Bitácora de Proyecto", "Firmware C++", "Esquemático Hardware"]
   }
 ];
+
 export function initWorksWheel(container, options = {}) {
   if (!container) return null;
 
   const items = options.items || DEFAULT_WORKS;
   const label = options.label || "Works '26";
   const action = options.action !== undefined ? options.action : "Ver";
+  const onSelect = options.onSelect || null;
 
   const count = items.length;
   const last = Math.max(count - 1, 0);
@@ -97,13 +98,14 @@ export function initWorksWheel(container, options = {}) {
   const stageEl = document.createElement("div");
   stageEl.tabIndex = 0;
   stageEl.role = "listbox";
-  stageEl.className = "absolute inset-0 cursor-grab touch-pan-x outline-none active:cursor-grabbing";
+  stageEl.className = "absolute inset-0 outline-none";
 
   const wheelEl = document.createElement("div");
   wheelEl.className = "absolute top-1/2 left-1/2 pointer-events-none";
   wheelEl.style.transformStyle = "preserve-3d";
 
   const cardRefs = [];
+
   items.forEach((item, i) => {
     const card = document.createElement("div");
     card.id = `works-wheel-${i}`;
@@ -113,11 +115,12 @@ export function initWorksWheel(container, options = {}) {
     card.style.willChange = "transform, opacity";
 
     const face = document.createElement("div");
-    face.className = "relative block w-full h-full overflow-hidden rounded-2xl bg-white border border-neutral-300/80 shadow-md transition-all duration-300 hover:shadow-xl hover:border-neutral-500";
+    face.className = "relative block w-full h-full overflow-hidden rounded-2xl bg-white border border-neutral-300/80 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_28px_50px_-10px_rgba(0,0,0,0.22)] hover:border-neutral-500";
 
     const img = document.createElement("img");
     img.src = item.image || item.src;
     img.alt = item.title;
+    img.draggable = false;
     img.className = "w-full h-full object-cover select-none pointer-events-none";
 
     face.appendChild(img);
@@ -129,10 +132,10 @@ export function initWorksWheel(container, options = {}) {
     const cardInfo = document.createElement("div");
     cardInfo.className = "pointer-events-none absolute left-3.5 bottom-3.5 right-3.5 flex items-center justify-between";
     cardInfo.innerHTML = `
-      <span class="text-[11px] font-mono tracking-wider text-white font-semibold truncate max-w-[70%]">
+      <span class="text-[11px] font-mono tracking-wider text-white drop-shadow-sm font-semibold truncate max-w-[70%]">
         ${item.title}
       </span>
-      <span class="bg-white/95 text-neutral-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+      <span class="bg-white/95 text-neutral-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1 group-hover:scale-105 transition-transform">
         ${action} ↗
       </span>
     `;
@@ -140,21 +143,18 @@ export function initWorksWheel(container, options = {}) {
 
     card.appendChild(face);
 
-    // Evento Clic para abrir el enlace directo
+    // Clic directo y limpio sin interferencias de arrastre
     card.addEventListener("click", (e) => {
-      e.preventDefault();
       e.stopPropagation();
-
-      // Si la tarjeta no es la frontal, la centrante primero
-      if (active !== i) {
+      const destination = item.link || item.href;
+      if (active === i) {
+        if (destination) {
+          window.open(destination, "_blank", "noopener,noreferrer");
+        } else if (onSelect) {
+          onSelect(i, item);
+        }
+      } else {
         to(i + 1);
-        return;
-      }
-
-      // Si es la tarjeta frontal, abre el enlace
-      const targetUrl = item.href || item.link || item.url;
-      if (targetUrl) {
-        window.open(targetUrl, "_blank", "noopener,noreferrer");
       }
     });
 
@@ -166,12 +166,12 @@ export function initWorksWheel(container, options = {}) {
   section.appendChild(stageEl);
 
   const labelEl = document.createElement("div");
-  labelEl.className = "pointer-events-none absolute inset-0 grid place-items-center tracking-tight font-black uppercase text-center text-neutral-900 z-10 transition-opacity duration-300";
+  labelEl.className = "pointer-events-none absolute inset-0 grid place-items-center tracking-tight font-black uppercase text-center text-neutral-900 select-none z-10 transition-opacity duration-300";
   labelEl.textContent = label;
   section.appendChild(labelEl);
 
   const titleEl = document.createElement("div");
-  titleEl.className = "pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-tight font-black uppercase text-neutral-900 opacity-0 z-10 max-w-[42%] leading-[1.05]";
+  titleEl.className = "pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-tight font-black uppercase text-neutral-900 opacity-0 select-none z-10 max-w-[42%] leading-[1.05]";
   titleEl.textContent = items[0] ? items[0].title : "";
   section.appendChild(titleEl);
 
@@ -194,6 +194,16 @@ export function initWorksWheel(container, options = {}) {
     indexButtons.push(btn);
   });
   section.appendChild(indexList);
+
+  const hintPill = document.createElement("div");
+  hintPill.className = "pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-neutral-200 shadow-sm backdrop-blur-md text-[10px] md:text-[11px] font-mono text-neutral-600 uppercase tracking-wider";
+  hintPill.innerHTML = `
+    <svg class="w-3 h-3 text-neutral-500 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>USA EL SCROLL O LAS FLECHAS PARA GIRAR</span>
+  `;
+  section.appendChild(hintPill);
 
   container.appendChild(section);
 
@@ -238,6 +248,7 @@ export function initWorksWheel(container, options = {}) {
     target = clamp(next, 0, last + 1);
   }
 
+  // Interacción únicamente por SCROLL
   let settlingTimer = null;
   stageEl.addEventListener("wheel", (event) => {
     const delta = event.deltaY;
@@ -248,23 +259,16 @@ export function initWorksWheel(container, options = {}) {
     settlingTimer = setTimeout(() => to(Math.round(target)), SETTLE);
   }, { passive: false });
 
-  let isPointerDown = false;
-  let dragStartY = 0;
-
-  stageEl.addEventListener("pointerdown", (event) => {
-    isPointerDown = true;
-    dragStartY = event.clientY;
+  // Interacción por Teclado
+  stageEl.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      event.preventDefault();
+      to(Math.round(target) + 1);
+    } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      to(Math.round(target) - 1);
+    }
   });
-
-  stageEl.addEventListener("pointermove", (event) => {
-    if (!isPointerDown) return;
-    const diff = dragStartY - event.clientY;
-    to(target + diff / DRAG_UNITS);
-    dragStartY = event.clientY;
-  });
-
-  stageEl.addEventListener("pointerup", () => { isPointerDown = false; });
-  stageEl.addEventListener("pointercancel", () => { isPointerDown = false; });
 
   function updateActiveUI(near) {
     indexButtons.forEach((btn, idx) => {
