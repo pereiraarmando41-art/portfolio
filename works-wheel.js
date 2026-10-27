@@ -3,16 +3,16 @@
  * Vanilla JavaScript Implementation of the WorksWheel React Component
  */
 
-const CARD_H = 0.38; // front card height, of the stage
-const CARD_MAX_W = 0.34; // ... but never wider than this much of the stage
-const CARD_RATIO = 1.45; // card width / height
-const STEP = 40; // degrees between cards on the drum
-const DRUM = 2.22; // drum radius, in card heights - and everything below likewise
-const LENS = 2.7; // perspective distance
-const RING_R = 1.14; // ring radius
+const CARD_H = 0.38;
+const CARD_MAX_W = 0.34;
+const CARD_RATIO = 1.45;
+const STEP = 40;
+const DRUM = 2.22;
+const LENS = 2.7;
+const RING_R = 1.14;
 const BOW = 1.82;
-const TITLE = 0.115; // ring label and front-card title
-const INDEX = 0.038; // the index down the right-hand side
+const TITLE = 0.115;
+const INDEX = 0.038;
 const CULL = 1.6;
 
 const WHEEL_UNITS = 900;
@@ -41,6 +41,7 @@ export const DEFAULT_WORKS = [
     image: "assets/digital-twin.png",
     src: "assets/digital-twin.png",
     href: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
+    link: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
     stats: "LINTI UNLP • Cisternas 1400 m³ • Telemetría IoT",
     tools: ["Python", "Digital Twins", "IoT", "DSM", "Simulaciones Estocásticas"],
     deliverables: ["Arquitectura Lógica IoT", "Batería Hidráulica Virtual", "Simulador Climático Estocástico"]
@@ -52,9 +53,22 @@ export const DEFAULT_WORKS = [
     image: "assets/n-queens.png",
     src: "assets/n-queens.png",
     href: "https://github.com/pereiraarmando41-art/Sistemas-Distribuidos-y-Paralelos",
+    link: "https://github.com/pereiraarmando41-art/Sistemas-Distribuidos-y-Paralelos",
     stats: "C • MPI + Pthreads • Speedup & Escalabilidad",
     tools: ["C", "MPI", "Pthreads", "Bitwise Backtrack", "Takaken Alg."],
     deliverables: ["Cola Generadora de Tareas", "Balanceo Dinámico de Carga", "Evaluación de Escalabilidad y Speedup"]
+  },
+  {
+    title: "Receptores Radio FM",
+    subtitle: "Bitácora & Prototipo de Sistemas Embebidos",
+    description: "Bitácora de desarrollo del prototipo de radio FM dual controlado mediante ESP8266, multiplexación de audio analógico CD4052, potenciómetro digital X9C103S y sintonizadores TEA5767 / HEX3653.",
+    image: "assets/about_starry_castle_hq.jpg",
+    src: "assets/about_starry_castle_hq.jpg",
+    href: "https://github.com/tpII/2026-f2-receptores-radio-fm",
+    link: "https://github.com/tpII/2026-f2-receptores-radio-fm",
+    stats: "ESP8266 • CD4052 • Potenciómetro X9C103S",
+    tools: ["ESP8266", "C++", "Proteus", "KiCad", "FreeRTOS"],
+    deliverables: ["Bitácora de Proyecto", "Firmware C++", "Esquemático Hardware"]
   }
 ];
 
@@ -63,7 +77,7 @@ export function initWorksWheel(container, options = {}) {
 
   const items = options.items || DEFAULT_WORKS;
   const label = options.label || "Works '26";
-  const action = options.action !== undefined ? options.action : "View";
+  const action = options.action !== undefined ? options.action : "Ver";
   const onSelect = options.onSelect || null;
 
   const count = items.length;
@@ -75,7 +89,6 @@ export function initWorksWheel(container, options = {}) {
   let stage = { w: container.clientWidth || 800, h: container.clientHeight || 600 };
   let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Build DOM Structure
   container.innerHTML = "";
   container.classList.add("relative", "w-full", "h-full", "overflow-hidden", "select-none");
 
@@ -83,19 +96,16 @@ export function initWorksWheel(container, options = {}) {
   section.setAttribute("aria-label", label);
   section.className = "relative w-full h-full min-h-[24rem] overflow-hidden select-none bg-transparent text-neutral-900";
 
-  // Stage (perspective container)
   const stageEl = document.createElement("div");
   stageEl.tabIndex = 0;
   stageEl.role = "listbox";
   stageEl.setAttribute("aria-label", label);
   stageEl.className = "absolute inset-0 cursor-grab touch-pan-x outline-none focus-visible:outline-2 focus-visible:outline-neutral-900 focus-visible:-outline-offset-4 active:cursor-grabbing";
 
-  // Wheel (preserve-3d anchor)
   const wheelEl = document.createElement("div");
   wheelEl.className = "absolute top-1/2 left-1/2 pointer-events-none";
   wheelEl.style.transformStyle = "preserve-3d";
 
-  // Cards
   const cardRefs = [];
   items.forEach((item, i) => {
     const card = document.createElement("div");
@@ -112,7 +122,7 @@ export function initWorksWheel(container, options = {}) {
     face.style.transformOrigin = "center center";
 
     const img = document.createElement("img");
-    img.src = item.image;
+    img.src = item.image || item.src;
     img.alt = item.title;
     img.draggable = false;
     img.className = "w-full h-full object-cover select-none pointer-events-none";
@@ -120,12 +130,10 @@ export function initWorksWheel(container, options = {}) {
 
     face.appendChild(img);
 
-    // Subtle gradient overlay for card readability
     const gradientOverlay = document.createElement("div");
     gradientOverlay.className = "pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent";
     face.appendChild(gradientOverlay);
 
-    // Bottom subtle info badge on card
     const cardInfo = document.createElement("div");
     cardInfo.className = "pointer-events-none absolute left-3.5 bottom-3.5 right-3.5 flex items-center justify-between";
     cardInfo.innerHTML = `
@@ -140,16 +148,19 @@ export function initWorksWheel(container, options = {}) {
 
     card.appendChild(face);
 
-    // Click on card
+    // Evento Click con tolerancia corregida para arrastres breves
     card.addEventListener("click", (e) => {
-      if (dragDelta > 6) return; // Ignore drag clicks
+      e.stopPropagation();
+      if (dragDelta > 15) return; // Tolerancia aumentada para clics en dispositivos móviles/touch
+
       if (active === i) {
         if (onSelect) {
           onSelect(i, item);
-        } else if (window.openProjectModal) {
-          window.openProjectModal(item);
-        } else if (item.href && item.href.startsWith("http")) {
-          window.open(item.href, "_blank");
+        } else {
+          const url = item.href || item.link;
+          if (url) {
+            window.open(url, "_blank", "noopener,noreferrer");
+          }
         }
       } else {
         to(i + 1);
@@ -163,19 +174,16 @@ export function initWorksWheel(container, options = {}) {
   stageEl.appendChild(wheelEl);
   section.appendChild(stageEl);
 
-  // Center ring label ("Works '26" or "Landing Pages")
   const labelEl = document.createElement("div");
   labelEl.className = "pointer-events-none absolute inset-0 grid place-items-center tracking-tight font-black uppercase text-center text-neutral-900 select-none z-10 transition-opacity duration-300";
   labelEl.textContent = label;
   section.appendChild(labelEl);
 
-  // Front-card title
   const titleEl = document.createElement("div");
   titleEl.className = "pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-tight font-black uppercase text-neutral-900 opacity-0 select-none z-10 max-w-[42%] leading-[1.05]";
   titleEl.textContent = items[0] ? items[0].title : "";
   section.appendChild(titleEl);
 
-  // Side Index List
   const indexList = document.createElement("ol");
   indexList.className = "text-neutral-500 absolute top-[7%] right-[3%] text-right leading-[1.75] z-20 space-y-0.5 select-none font-mono";
   const indexButtons = [];
@@ -198,20 +206,18 @@ export function initWorksWheel(container, options = {}) {
   });
   section.appendChild(indexList);
 
-  // Bottom helper pill
   const hintPill = document.createElement("div");
   hintPill.className = "pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-neutral-200 shadow-sm backdrop-blur-md text-[10px] md:text-[11px] font-mono text-neutral-600 uppercase tracking-wider";
   hintPill.innerHTML = `
     <svg class="w-3 h-3 text-neutral-500 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <span>SCROLL OR DRAG DRUM TO CYCLE</span>
+    <span>SCROLL O ARRASTRA PARA GIRAR</span>
   `;
   section.appendChild(hintPill);
 
   container.appendChild(section);
 
-  // Geometry computation
   let currentMetrics = calculateMetrics();
 
   function calculateMetrics() {
@@ -255,24 +261,20 @@ export function initWorksWheel(container, options = {}) {
 
   applyMetrics();
 
-  // ResizeObserver
   const ro = new ResizeObserver(() => {
     stage = { w: stageEl.clientWidth, h: stageEl.clientHeight };
     applyMetrics();
   });
   ro.observe(stageEl);
 
-  // Target steering
   function to(next) {
     target = clamp(next, 0, last + 1);
   }
 
-  // Wheel interaction
   let settlingTimer = null;
   const onWheel = (event) => {
     const delta = event.deltaY;
     const next = target + delta / WHEEL_UNITS;
-    // Native listener: cancellable only while inside wheel range so page scrolls on at edges
     if (next > 0 && next < last + 1) {
       event.preventDefault();
     }
@@ -284,7 +286,6 @@ export function initWorksWheel(container, options = {}) {
   };
   stageEl.addEventListener("wheel", onWheel, { passive: false });
 
-  // Pointer drag interaction
   let isPointerDown = false;
   let dragStartY = 0;
   let dragDelta = 0;
@@ -320,7 +321,6 @@ export function initWorksWheel(container, options = {}) {
   stageEl.addEventListener("pointerup", endDrag);
   stageEl.addEventListener("pointercancel", endDrag);
 
-  // Keyboard navigation
   stageEl.addEventListener("keydown", (event) => {
     if (event.key === "ArrowDown" || event.key === "ArrowRight") {
       event.preventDefault();
@@ -331,7 +331,6 @@ export function initWorksWheel(container, options = {}) {
     }
   });
 
-  // UI Active State Update
   function updateActiveUI(near) {
     stageEl.setAttribute("aria-activedescendant", `works-wheel-${near}`);
     cardRefs.forEach((card, idx) => {
@@ -356,7 +355,6 @@ export function initWorksWheel(container, options = {}) {
     }
   }
 
-  // Animation Loop (Single rAF pass writing direct DOM transforms)
   let frameId = 0;
   let isRunning = true;
 
