@@ -271,7 +271,7 @@
           <a href="#services" onclick="selectService(1)" class="hover:text-black transition-colors">
             [ SISTEMAS DISTRIBUIDOS ]
           </a>
-          <a href="#services" onclick="selectService(2)" class="hover:text-black transition-colors text-black font-bold">
+          <a href="#services" onclick="selectService(2)" class="hover:text-black transition-colors">
             [ TELEMETRÍA IOT ]
           </a>
         </div>
@@ -524,7 +524,7 @@
       </p>
     </div>
 
-    <div class="max-w-4xl mx-auto flex flex-col space-y-3.5">
+<div class="max-w-4xl mx-auto flex flex-col space-y-3.5">
       <!-- Item 1: Gemelos Digitales -->
       <div id="service-0" onclick="toggleService(0)" class="accordion-item w-full flex flex-col px-6 py-4 rounded-3xl border border-neutral-300 bg-white hover:border-black transition-all cursor-pointer">
         <div class="flex items-center justify-between">
@@ -565,22 +565,22 @@
         </div>
       </div>
 
-      <!-- Item 3: IoT & Embedded (Active by default) -->
-      <div id="service-2" onclick="toggleService(2)" class="accordion-item active w-full flex flex-col px-6 py-4 rounded-3xl bg-black text-white shadow-xl cursor-pointer transition-all transform scale-[1.01]">
+      <!-- Item 3: IoT & Embedded -->
+      <div id="service-2" onclick="toggleService(2)" class="accordion-item w-full flex flex-col px-6 py-4 rounded-3xl border border-neutral-300 bg-white hover:border-black transition-all cursor-pointer">
         <div class="flex items-center justify-between">
-          <span class="item-badge w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-xs font-medium text-neutral-300">3</span>
-          <span class="item-title text-xs md:text-sm font-bold tracking-widest uppercase text-white">SISTEMAS EMBEBIDOS &amp; IOT</span>
-          <div class="item-icon w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform rotate-90">
-            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span class="item-badge w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">3</span>
+          <span class="item-title text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">SISTEMAS EMBEBIDOS &amp; IOT</span>
+          <div class="item-icon w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center transition-transform">
+            <svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </div>
         </div>
         <div class="accordion-content">
-          <p class="text-xs text-neutral-300 leading-relaxed max-w-2xl mb-4">
+          <p class="text-xs text-neutral-500 leading-relaxed max-w-2xl mb-4">
             Programación de microcontroladores ESP8266 y ATmega328P, FreeRTOS, multiplexación de hardware, potenciómetros digitales y protocolos de comunicación IoT.
           </p>
-          <div class="flex items-center justify-between border-t border-neutral-800 pt-3">
+          <div class="flex items-center justify-between border-t border-neutral-200 pt-3">
             <span class="text-[11px] font-mono text-neutral-400">ENTREGABLES: FIRMWARE C/C++, ESQUEMÁTICOS, PROTOTIPOS HARDWARE</span>
-            <button onclick="event.stopPropagation(); bookSpecificService('IoT & Embedded');" class="text-xs font-bold underline text-white hover:text-neutral-300">CONSULTAR ↗</button>
+            <button onclick="event.stopPropagation(); bookSpecificService('IoT & Embedded');" class="text-xs font-bold underline hover:text-neutral-600">CONSULTAR ↗</button>
           </div>
         </div>
       </div>
@@ -702,7 +702,7 @@
       }
     };
 
-    function toggleService(index) {
+function toggleService(index) {
       const items = document.querySelectorAll('.accordion-item');
       items.forEach((item, i) => {
         const badge = item.querySelector('.item-badge');
@@ -711,13 +711,26 @@
         const iconSvg = icon.querySelector('svg');
 
         if (i === index) {
-          item.classList.add('active', 'bg-black', 'text-white', 'shadow-xl', 'scale-[1.01]');
-          item.classList.remove('bg-white', 'text-neutral-800', 'border-neutral-300');
-          badge.className = 'item-badge w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-xs font-medium text-neutral-300';
-          title.className = 'item-title text-xs md:text-sm font-bold tracking-widest uppercase text-white';
-          icon.className = 'item-icon w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform rotate-90';
-          iconSvg.className = 'w-3.5 h-3.5 text-white';
+          const isAlreadyActive = item.classList.contains('active');
+          if (isAlreadyActive) {
+            // Si ya estaba abierta, la cerramos
+            item.classList.remove('active', 'bg-black', 'text-white', 'shadow-xl', 'scale-[1.01]');
+            item.classList.add('bg-white', 'text-neutral-800', 'border-neutral-300');
+            badge.className = 'item-badge w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700';
+            title.className = 'item-title text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800';
+            icon.className = 'item-icon w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center transition-transform rotate-0';
+            iconSvg.className = 'w-3.5 h-3.5 text-neutral-700';
+          } else {
+            // Si estaba cerrada, la abrimos
+            item.classList.add('active', 'bg-black', 'text-white', 'shadow-xl', 'scale-[1.01]');
+            item.classList.remove('bg-white', 'text-neutral-800', 'border-neutral-300');
+            badge.className = 'item-badge w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-xs font-medium text-neutral-300';
+            title.className = 'item-title text-xs md:text-sm font-bold tracking-widest uppercase text-white';
+            icon.className = 'item-icon w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform rotate-90';
+            iconSvg.className = 'w-3.5 h-3.5 text-white';
+          }
         } else {
+          // Las demás permanecen cerradas
           item.classList.remove('active', 'bg-black', 'text-white', 'shadow-xl', 'scale-[1.01]');
           item.classList.add('bg-white', 'text-neutral-800', 'border-neutral-300');
           badge.className = 'item-badge w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700';
