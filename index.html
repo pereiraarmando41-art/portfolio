@@ -238,25 +238,45 @@
       </h1>
     </div>
 
-    <!-- Grilla Inferior Distribuida en 2 Columnas Limpias -->
-    <div class="relative grid grid-cols-1 md:grid-cols-12 items-end gap-8 pt-4 border-t border-neutral-200">
+<!-- Grilla Inferior Distribuida en 2 Columnas Limpias -->
+<div class="relative grid grid-cols-1 md:grid-cols-12 items-end gap-8 pt-4 border-t border-neutral-200">
+  
+  <!-- Columna Izquierda: Ubicación, Indicador de Scroll + Texto y Descarga de CV -->
+  <div class="md:col-span-6 flex flex-col items-start pl-2 md:pl-4 space-y-6">
+    <span class="text-xs font-bold tracking-widest uppercase text-neutral-800">
+      UNLP // FACULTAD DE INFORMÁTICA &bull; 2026
+    </span>
+    
+    <div class="flex flex-wrap items-center gap-6">
       
-      <!-- Columna Izquierda: Ubicación e Indicador de Scroll -->
-      <div class="md:col-span-6 flex flex-col items-start pl-2 md:pl-4 space-y-6">
-        <span class="text-xs font-bold tracking-widest uppercase text-neutral-800">
-          UNLP // FACULTAD DE INFORMÁTICA &bull; 2026
+      <!-- Grupo 1: Botón de Scroll + Texto al lado -->
+      <div class="flex items-center gap-3">
+        <a class="circle-btn w-14 h-14 border-neutral-300" href="#about" aria-label="Scroll a Sobre Mí">
+          <svg class="w-5 h-5 text-neutral-800 transform rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <span class="text-xs font-mono uppercase text-neutral-400 tracking-wider">
+          SCROLL PARA EXPLORAR
         </span>
-        <div class="flex items-center gap-4">
-          <a class="circle-btn w-14 h-14 border-neutral-300" href="#about" aria-label="Scroll a Sobre Mí">
-            <svg class="w-5 h-5 text-neutral-800 transform rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
-          <span class="text-xs font-mono uppercase text-neutral-400 tracking-wider">
-            SCROLL PARA EXPLORAR
-          </span>
-        </div>
       </div>
+
+      <!-- Grupo 2: Botón Descargar CV -->
+      <a 
+        href="assets/CV_Armando_Pereira.pdf" 
+        download="CV_Armando_Pereira.pdf"
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-neutral-900 text-white text-xs font-mono font-semibold uppercase tracking-wider shadow-sm hover:bg-neutral-800 hover:scale-105 transition-all duration-200"
+      >
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>DESCARGAR CV</span>
+      </a>
+
+    </div>
+  </div>
 
       <!-- Columna Derecha: Resumen Profesional & Especialidades -->
       <div class="md:col-span-6 flex flex-col items-start md:items-end text-left md:text-right pr-2 md:pr-4 space-y-6">
@@ -266,13 +286,13 @@
 
         <div class="flex flex-wrap md:justify-end gap-4 text-xs font-semibold tracking-widest text-neutral-600 uppercase">
           <a href="#services" onclick="selectService(0)" class="hover:text-black transition-colors">
-            [ GEMELOS DIGITALES ]
+             GEMELOS DIGITALES 
           </a>
           <a href="#services" onclick="selectService(1)" class="hover:text-black transition-colors">
-            [ SISTEMAS DISTRIBUIDOS ]
+             SISTEMAS DISTRIBUIDOS 
           </a>
           <a href="#services" onclick="selectService(2)" class="hover:text-black transition-colors">
-            [ TELEMETRÍA IOT ]
+             TELEMETRÍA IOT 
           </a>
         </div>
       </div>
