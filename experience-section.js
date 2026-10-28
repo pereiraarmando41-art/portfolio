@@ -133,16 +133,16 @@ export async function initExperienceSection() {
       hudProgress.style.width = `${(currentProgress * 100).toFixed(1)}%`;
     }
 
-    // 5. Update HUD Phase Title
-    if (hudPhase) {
-      if (currentProgress < 0.30) {
-        hudPhase.textContent = "ORIGIN & FOUNDATIONS";
-      } else if (currentProgress < 0.65) {
-        hudPhase.textContent = "SELF-DIRECTED LEARNING";
-      } else {
-        hudPhase.textContent = "FREELANCE / INDEPENDENT";
+      // 5. Update HUD Phase Title (Adaptado a UNLP & LINTI)
+      if (hudPhase) {
+        if (currentProgress < 0.25) {
+          hudPhase.textContent = "FORMACIÓN & TRAYECTORIA";
+        } else if (currentProgress < 0.65) {
+          hudPhase.textContent = "UNLP — INGENIERÍA EN COMPUTACIÓN";
+        } else {
+          hudPhase.textContent = "LINTI UNLP — PPS GEMELO DIGITAL";
+        }
       }
-    }
 
     // 6. Highlight active bottom jump button
     jumpButtons.forEach(btn => {
