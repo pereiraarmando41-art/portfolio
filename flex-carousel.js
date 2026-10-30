@@ -4,6 +4,14 @@ export const photo = (id) => `https://images.unsplash.com/${id}?w=1200&q=80&auto
 
 export const DEFAULT_ITEMS = [
   {
+    src: "assets/portada-repositorio.jpg",
+    alt: 'Circuitos Digitales y Microcontroladores',
+    title: "Sistemas Embebidos ATmega328P",
+    subtitle: "Firmware Bare-Metal & Simulación Proteus VSM",
+    description: "Desarrollo en C (AVR-GCC) de 4 sistemas embebidos: Super Loop, MEF de Microondas, Monitor I2C/RTC de Invernadero y PWM/ADC RGB.",
+    link: "https://github.com/pereiraarmando41-art/Circuitos-Digitales-y-Microcontroladores"
+  },  
+  {
     src: 'assets/digital-twin.png',
     alt: 'Gemelo Digital LINTI',
     title: 'Digital Twin & Batería Hidráulica',

@@ -34,6 +34,15 @@ function place(ringDeg, drumDeg, ringR, drumR, bow, m) {
 
 export const DEFAULT_WORKS = [
   {
+    title: "Sistemas Embebidos ATmega328P",
+    subtitle: "Firmware Bare-Metal & Simulación Proteus VSM",
+    description: "Desarrollo en C (AVR-GCC) de 4 sistemas embebidos: Super Loop, MEF de Microondas, Monitor I2C/RTC de Invernadero y PWM/ADC RGB.",
+    image: "assets/portada-repositorio.jpg",
+    src: "assets/portada-repositorio.jpg",
+    href: "https://github.com/pereiraarmando41-art/Circuitos-Digitales-y-Microcontroladores",
+    link: "https://github.com/pereiraarmando41-art/Circuitos-Digitales-y-Microcontroladores"
+  },
+  {
     title: "Gemelo Digital LINTI",
     subtitle: "Digital Twin & Batería Hidráulica Virtual",
     description: "Diseño y desarrollo en Python de un Gemelo Digital predictivo enfocado en eficiencia energética y optimización del esquema de llenado de cisternas de 1400 m³, integrando telemetría IoT y generación fotovoltaica.",
