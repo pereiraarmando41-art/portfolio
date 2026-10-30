@@ -12,14 +12,6 @@ export const DEFAULT_ITEMS = [
     link: "https://github.com/pereiraarmando41-art/Circuitos-Digitales-y-Microcontroladores"
   },  
   {
-    src: 'assets/digital-twin.png',
-    alt: 'Gemelo Digital LINTI',
-    title: 'Digital Twin & Batería Hidráulica',
-    subtitle: 'Laboratorio LINTI — UNLP',
-    description: 'Modelado dinámico en Python para cisternas de 1400 m³, telemetría IoT y optimización de potencia con parque solar.',
-    link: 'https://www.linkedin.com/in/armando-pereira-2810a3278/'
-  },
-  {
     src: 'assets/n-queens.png',
     alt: 'Resolución N-Reinas Paralelo',
     title: 'Solución problema N-Reinas Paralelo',
@@ -34,6 +26,14 @@ export const DEFAULT_ITEMS = [
     subtitle: 'Taller de Proyecto 2 // UNLP',
     description: 'Prototipo de radio FM dual controlado por ESP8266 combinando módulos TEA5767/HEX3653, Relé HL-41, potenciómetro digital X9C103S y amplificador PAM8403.',
     link: 'https://github.com/tpII/2026-f2-receptores-radio-fm'
+  },
+  {
+    src: 'assets/digital-twin.png',
+    alt: 'Gemelo Digital LINTI',
+    title: 'Digital Twin & Batería Hidráulica',
+    subtitle: 'Laboratorio LINTI — UNLP',
+    description: 'Modelado dinámico en Python para cisternas de 1400 m³, telemetría IoT y optimización de potencia con parque solar.',
+    link: 'https://www.linkedin.com/in/armando-pereira-2810a3278/'
   }
 ];
 

@@ -43,20 +43,8 @@ export const DEFAULT_WORKS = [
     link: "https://github.com/pereiraarmando41-art/Circuitos-Digitales-y-Microcontroladores"
   },
   {
-    title: "Gemelo Digital LINTI",
-    subtitle: "Digital Twin & Batería Hidráulica Virtual",
-    description: "Diseño y desarrollo en Python de un Gemelo Digital predictivo enfocado en eficiencia energética y optimización del esquema de llenado de cisternas de 1400 m³, integrando telemetría IoT y generación fotovoltaica.",
-    image: "assets/digital-twin.png",
-    src: "assets/digital-twin.png",
-    href: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
-    link: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
-    stats: "LINTI UNLP • Cisternas 1400 m³ • Telemetría IoT",
-    tools: ["Python", "Digital Twins", "IoT", "DSM", "Simulaciones Estocásticas"],
-    deliverables: ["Arquitectura Lógica IoT", "Batería Hidráulica Virtual", "Simulador Climático Estocástico"]
-  },
-  {
-    title: "Resolución Paralela del Problema de las N-Reinas (MPI + Pthreads)",
-    subtitle: "Resolución Paralela del Problema de las N-Reinas",
+    title: "Resolución Paralela del Problema de las N-Reinas",
+    subtitle: "Sistemas Distribuidos y Paralelos // UNLP",
     description: "Algoritmo híbrido (MPI + Pthreads) en C para clústeres distribuidos y multihilo con balanceo dinámico de carga, optimización Bitwise Backtrack (Takaken) y evaluación de métricas de rendimiento.",
     image: "assets/n-queens.png",
     src: "assets/n-queens.png",
@@ -67,7 +55,7 @@ export const DEFAULT_WORKS = [
     deliverables: ["Cola Generadora de Tareas", "Balanceo Dinámico de Carga", "Evaluación de Escalabilidad y Speedup"]
   },
   {
-    title: "Receptores de Radio FM (HEX3653 y TEA5767) con ESP8266",
+    title: "Receptores de Radio FM con ESP8266",
     subtitle: "Taller de Proyecto 2 // UNLP",
     description: "Prototipo de radio FM dual controlado por ESP8266 combinando módulos TEA5767/HEX3653, Relé HL-41, potenciómetro digital X9C103S y amplificador PAM8403.",
     image: "assets/F2_Diagrama_Mejora_Maquetado.jpg",
@@ -77,6 +65,18 @@ export const DEFAULT_WORKS = [
     stats: "ESP8266 • CD4052 • Potenciómetro X9C103S",
     tools: ["ESP8266", "C++", "Proteus", "KiCad", "FreeRTOS"],
     deliverables: ["Bitácora de Proyecto", "Firmware C++", "Esquemático Hardware"]
+  },
+  {
+    title: "Gemelo Digital LINTI",
+    subtitle: "Digital Twin & Batería Hidráulica Virtual",
+    description: "Diseño y desarrollo en Python de un Gemelo Digital predictivo enfocado en eficiencia energética y optimización del esquema de llenado de cisternas de 1400 m³, integrando telemetría IoT y generación fotovoltaica.",
+    image: "assets/digital-twin.png",
+    src: "assets/digital-twin.png",
+    href: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
+    link: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
+    stats: "LINTI UNLP • Cisternas 1400 m³ • Telemetría IoT",
+    tools: ["Python", "Digital Twins", "IoT", "DSM", "Simulaciones Estocásticas"],
+    deliverables: ["Arquitectura Lógica IoT", "Batería Hidráulica Virtual", "Simulador Climático Estocástico"]
   }
 ];
 
@@ -180,8 +180,7 @@ export function initWorksWheel(container, options = {}) {
   section.appendChild(labelEl);
 
   const titleEl = document.createElement("div");
-  titleEl.className = "pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-tight font-black uppercase text-neutral-900 opacity-0 select-none z-10 max-w-[42%] leading-[1.05]";
-  titleEl.textContent = items[0] ? items[0].title : "";
+  titleEl.className = "pointer-events-none absolute top-1/2 left-[3%] sm:left-[4%] md:left-[5%] -translate-y-1/2 tracking-tight font-black uppercase text-neutral-900 opacity-0 select-none z-10 max-w-[32%] sm:max-w-[35%] leading-[1.05]";  titleEl.textContent = items[0] ? items[0].title : "";
   section.appendChild(titleEl);
 
   const indexList = document.createElement("ol");
