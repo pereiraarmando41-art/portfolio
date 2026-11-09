@@ -1,4 +1,4 @@
-# ECHO — Editorial Developer & Designer Portfolio
+# Armando Pereira — Computer Engineer & Software Developer Portfolio
 
 <div align="center">
 
@@ -7,156 +7,93 @@
   [![License](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge)](LICENSE)
 
   <p align="center">
-    <strong>A bespoke, high-performance monochrome editorial portfolio showcasing digital craftsmanship, spatial web animations, and interactive design engineering.</strong>
+    <strong>Portafolio editorial interactivo de alto rendimiento especializado en Gemelos Digitales, Telemetría IoT, Sistemas Embebidos y Cómputo Paralelo / Distribuido.</strong>
   </p>
 
   <p align="center">
-    Crafted by <strong><a href="https://github.com/Jishnu09-siuu">Jishnu Mondal</a></strong> — Designer & Full-Stack Creative Developer.
+    Desarrollado por <strong><a href="https://github.com/pereiraarmando41-art">Armando Antonio Pereira</a></strong> — Estudiante Avanzado de Ingeniería en Computación (UNLP) & Desarrollador en Laboratorio LINTI.
   </p>
 
 </div>
 
 ---
 
-## ✦ Overview
+## ✦ Vista General
 
-**ECHO** is an editorial developer and designer portfolio engineered with a focus on typography, fluid physics, and cutting-edge web graphics. Built around a curated monochrome aesthetic, it marries brutalist minimalism with rich micro-interactions, hardware-accelerated scroll animations, and interactive 3D drum reel navigation.
+Este portafolio web personal presenta un diseño estético moderno, minimalista y editorial con animación fluida y soporte gráfico acelerado por hardware. Fue construido combinando micro-interacciones avanzadas, renderizado WebGL, física de scroll interactiva y soporte bilingüe (Español / Inglés).
 
-Whether presenting production landing pages, full-stack applications, or bespoke brand identities, ECHO provides an immersive editorial reading and browsing experience.
-
----
-
-## ✦ Key Features & Interactive Architecture
-
-### 1. 🪐 Custom ECHO Orbital Preloader
-- Seamless intro experience with an orbital wavy dot animation synchronized via `requestAnimationFrame`.
-- Auto-detects first load and dissolves smoothly to unveil the editorial hero section.
-
-### 2. 🗞️ Editorial Hero & Metallic Typography Shaders
-- Fluid responsive typography driven by dynamic viewport calculations (`clamp` / `vw`).
-- Multi-layer metallic header effects and integrated portrait depth masking.
-- Intersection-observer-powered entrance reveals that gracefully retrigger on revisit.
-
-### 3. 🔍 `ScrollExpandMedia` Kinetic Canvas
-- Scroll-driven media expansion stage that smoothly interpolates card dimensions, aspect ratio, and blur filters.
-- Dual-layer GPU-accelerated unblur rendering running at 120 FPS without reflow penalties.
-- Minimalist perimeter content layout ensuring 100% unobscured artwork visibility.
-
-### 4. 🧭 Horizontal Spatial Experience Canvas
-- Sticky horizontal timeline translating vertical user scroll into horizontal spatial progression.
-- Interactive timeline panels displaying milestones, career history, and "living flow" energy animations.
-- Accessible fallback honoring user OS preferences (`prefers-reduced-motion`).
-
-### 5. 🎡 WorksWheel 3D Drum Reel
-- Mathematical 3D cylindrical drum projection with radial ring transformations (`rotateX`, `rotateZ`, `translateZ`).
-- Physics-based smooth drag gestures, momentum inertia, wheel scrolling, and step navigation.
-- Deep project integration linking directly into dynamic modal inspection.
-
-### 6. 🌊 FlexCarousel (OGL WebGL Liquid Preset)
-- Interactive card slider powered by **OGL** (lightweight WebGL engine) with liquid lens bending and real-time mesh displacement.
-- Dynamic accordion states, focus-on-click navigation, and full keyboard/touch support.
-
-### 7. 🪟 Interactive Project Inspection Modal
-- Glassmorphic modal viewer with animated backdrop blur (`cubic-bezier` spring easing).
-- Comprehensive project metadata: client background, deliverable scopes, tech stacks, and direct links to live deployments.
+El sitio destaca la trayectoria académica y profesional de Armando Pereira en la **Universidad Nacional de La Plata (UNLP)** y en la **Práctica Profesional Supervisada (PPS)** en el **Laboratorio LINTI**, exhibiendo proyectos de sistemas distribuidos, desarrollo embebido y modelado ciber-físico.
 
 ---
 
-## ✦ Tech Stack
+## ✦ Características Clave y Arquitectura Interactiva
 
-| Domain | Technology | Description |
+### 1. 🌐 Soporte Bilingüe Nativo (ES / EN)
+- Selector de idioma dinámico en el encabezado con persistencia de preferencia local (`localStorage`).
+- Alternancia de idioma instantánea basada en clases `lang-es` / `lang-en` y atributos de documento `lang`, manteniendo el 100% del maquetado y los saltos de línea editoriales sin recargas de página.
+
+### 2. 🗞️ Encabezado Editorial y Tipografía Metálica
+- Tipografía fluida responsiva (`Plus Jakarta Sans`) con efectos de degradado metálico.
+- Barra de navegación con indicador de sección activa (`IntersectionObserver`), accesos directos a redes y descarga de CV.
+- Menú lateral (Drawer) optimizado para dispositivos móviles.
+
+### 3. 🔍 Canvas Cinético `ScrollExpandMedia` (Sobre Mí)
+- Etapa de expansión de tarjeta multimedia controlada por el scroll vertical del usuario.
+- Interpolación suave de dimensiones, sombras y desenfoque (efecto unblur en tiempo real) corriendo a 120 FPS sin penalizaciones de reflow.
+- Maquetado perimetral con información de disciplina, trayectoria y ubicación en La Plata.
+
+### 4. 🧭 Canvas Espacial de Experiencia Horizontal
+- Contenedor sticky que traduce el desplazamiento vertical del usuario en una progresión horizontal a través de la historia profesional y académica.
+- Hitos interactivos de la **UNLP** y el **Laboratorio LINTI** con indicadores de fase HUD y botones de salto rápido.
+- Compatibilidad accesible para preferencia de movimiento reducido (`prefers-reduced-motion`).
+
+### 5. 🎡 Tambor 3D `WorksWheel`
+- Proyección cilíndrica tridimensional en 3D (`rotateX`, `rotateZ`, `translateZ`) para la exploración de proyectos.
+- Gestos suaves de arrastre, desplazamiento por rueda de ratón e integración directa con ventanas modales.
+
+### 6. 🌊 `FlexCarousel` (Lente Líquido WebGL / OGL)
+- Carrusel interactivo impulsado por **OGL** (motor WebGL ligero) que aplica efectos de refracción líquida y deformación de malla.
+- Sistema de acordeón responsivo en las áreas de especialización y navegación por teclado/táctil.
+
+### 7. 🪟 Modales de Inspección de Proyectos y Contacto
+- Modales emergentes con efecto glassmorphism (desenfoque de fondo animado).
+- Visualización detallada de entregables, métricas clave, tecnologías y enlaces directos a repositorios de GitHub.
+- Formulario de contacto integrado con notificaciones Toast flotantes.
+
+---
+
+## ✦ Stack Tecnológico
+
+| Área | Tecnología | Descripción |
 |---|---|---|
-| **Structure** | HTML5 / Semantic Web | SEO-optimized, accessible markup with meta hierarchy |
-| **Styling** | Vanilla CSS + Tailwind CSS v3 | Custom dark/light design tokens, typography & CSS variables |
-| **Graphics & WebGL** | [OGL](https://github.com/oframe/ogl) | High-performance WebGL 3D meshes & shaders for liquid bending |
-| **Logic & Motion** | Vanilla JavaScript (ES Modules) | Lightweight, zero-framework overhead, modular components |
-| **Typography** | Plus Jakarta Sans | Editorial modernist sans-serif loaded from Google Fonts |
-| **Components** | `flex-carousel`, `works-wheel`, `scroll-expand-media` | Bespoke modular UI engines |
+| **Estructura** | HTML5 Semántico | Marcado optimizado para SEO y accesibilidad |
+| **Estilos** | Tailwind CSS v3 | Sistema de diseño minimalista, tipografía y tokens oscuros/claros |
+| **Gráficos & WebGL** | [OGL](https://github.com/oframe/ogl) | Motor WebGL ligero para efectos de lente y deformación líquida |
+| **Lógica y Movimiento** | JavaScript Vanilla (ES Modules) | Arquitectura modular sin dependencias pesadas de frameworks |
+| **Tipografía** | Plus Jakarta Sans | Tipografía moderna cargada desde Google Fonts |
+| **Componentes UI** | `flex-carousel`, `works-wheel`, `scroll-expand-media`, `experience-section` | Motores UI propios e independientes |
 
 ---
 
-## ✦ Featured Projects
+## ✦ Proyectos Destacados
 
-The portfolio indexes a curated roster of production web applications, landing pages, and client systems:
-
-- **Aether AI**: Cognitive workspace engineered for deep systemic research and reasoning canvas telemetry.
-- **Aether Protocol**: Monolithic preview portal and executive onboarding architectural briefing flow.
-- **Afterform S01**: Minimalist architectural lookbook and editorial digital showcase.
-- **Cafe Website (Mocha & Miso)**: Full-stack cafe management system with order processing and real-time reservation portal.
-- **Design Studio**: Bold creative agency identity website with fluid layout systems.
-- **Julian Vance Photography**: Analog & editorial photography archive showcasing visual storytelling.
-- **Sen Cruzo Client Portfolio**: Luxury architectural client presentation portfolio with custom typography.
+- **Digital Twin & Batería Hidráulica Virtual (LINTI UNLP)**: Prototipo en Python para el modelado dinámico-estocástico y optimización energética de cisternas de 1400 m³ integrando telemetría IoT y parque fotovoltaico.
+- **Resolución Paralela del Problema de las N-Reinas**: Solver híbrido en C (`MPI + Pthreads`) con balanceo dinámico de carga, optimización Bitwise Backtrack (poda por simetría de Takaken) y análisis formal de speedup.
+- **Sistemas Embebidos ATmega328P**: Repositorio de firmware bare-metal en C (AVR-GCC) que incluye máquinas de estados finitos (MEF), drivers UART/I2C/ADC y simulación en Proteus VSM.
+- **Receptor FM Dual con ESP8266**: Prototipo físico de sintonizador doble combinando módulos TEA5767/HEX3653, multiplexor analógico CD4052, potenciómetro digital X9C103S y servidor web.
 
 ---
 
-## ✦ Project Structure
+## ✦ Estructura del Proyecto
 
 ```bash
-ECHO-WEBSITE/
-├── index.html                   # Core single-page portfolio layout & markup
-├── flex-carousel.js             # WebGL / OGL-powered liquid carousel engine
-├── FlexCarousel.css             # Stylesheet for carousel layout & states
-├── FlexCarousel.tsx             # React / TypeScript source reference
-├── works-wheel.js               # 3D Cylindrical drum reel component
-├── scroll-expand-media.js       # Scroll-driven media expansion engine
-├── ScrollExpandMedia.tsx        # Component source reference
-├── experience-section.js        # Horizontal spatial timeline engine
-├── package.json                 # Project configuration & scripts
-├── assets/                      # Brand assets, portrait imagery, and icons
-├── Project Images/              # Production portfolio preview captures
-└── Landing Page Assest/         # Full-length landing page showcase assets
-```
+/
+├── index.html                   # Maquetado principal y estructura del portafolio
+├── flex-carousel.js             # Motor de carrusel líquido basado en WebGL / OGL
+├── FlexCarousel.css             # Estilos para carruseles y estados interactivos
+├── works-wheel.js               # Componente de tambor 3D vertical (WorksWheel)
+├── scroll-expand-media.js       # Motor de expansión multimedia en el scroll
+├── experience-section.js        # Timeline horizontal espacial de experiencia
+├── README.md                    # Documentación del proyecto
+└── assets/                      # Imágenes, capturas de proyectos y documento CV PDF
 
----
-
-## ✦ Getting Started Locally
-
-This project is built using native ES modules and standard web technologies. You can run it with any local HTTP server:
-
-### Prerequisites
-- Python 3.x **or** Node.js installed on your machine.
-
-### Option 1: Python Simple HTTP Server (Recommended)
-```bash
-# Clone the repository
-git clone https://github.com/Jishnu09-siuu/ECHO-WEBSITE.git
-cd ECHO-WEBSITE
-
-# Run local development server
-npm start
-# or directly:
-python3 -m http.server 8080
-```
-Then navigate to `http://localhost:8080` in your browser.
-
-### Option 2: Node.js / Vite / `npx serve`
-```bash
-npx serve .
-# or
-npx live-server
-```
-
----
-
-## ✦ Deployment
-
-Because ECHO is completely static and modular, it can be deployed instantly to any edge hosting provider:
-
-- **Vercel**: Run `vercel` from the root directory or connect the GitHub repository.
-- **Netlify**: Drag and drop the folder or connect via Git with publish directory set to `/`.
-- **GitHub Pages**: Head to repository **Settings > Pages** and set source to branch `main` and folder `/ (root)`.
-
----
-
-## ✦ Connect & Socials
-
-- **Portfolio**: [Jishnu Mondal](https://jishnumondal.vercel.app/)
-- **GitHub**: [@Jishnu09-siuu](https://github.com/Jishnu09-siuu)
-- **LinkedIn**: [jishnu-mondal](https://www.linkedin.com/in/jishnu-mondal/)
-- **X / Twitter**: [@Jishn8m](https://x.com/Jishn8m)
-
----
-
-## ✦ License
-
-This project is open-source and available under the [MIT License](LICENSE).
