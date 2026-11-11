@@ -72,8 +72,8 @@ export const DEFAULT_WORKS = [
     description: "Diseño y desarrollo en Python de un Gemelo Digital predictivo enfocado en eficiencia energética y optimización del esquema de llenado de cisternas de 1400 m³, integrando telemetría IoT y generación fotovoltaica.",
     image: "assets/digital-twin.png",
     src: "assets/digital-twin.png",
-    href: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
-    link: "https://www.linkedin.com/in/armando-pereira-2810a3278/",
+    href: "https://github.com/pereiraarmando41-art/PPS-Gemelo-Digital-Bombeo",
+    link: "https://github.com/pereiraarmando41-art/PPS-Gemelo-Digital-Bombeo",
     stats: "LINTI UNLP • Cisternas 1400 m³ • Telemetría IoT",
     tools: ["Python", "Digital Twins", "IoT", "DSM", "Simulaciones Estocásticas"],
     deliverables: ["Arquitectura Lógica IoT", "Batería Hidráulica Virtual", "Simulador Climático Estocástico"]

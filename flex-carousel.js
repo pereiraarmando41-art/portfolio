@@ -33,7 +33,7 @@ export const DEFAULT_ITEMS = [
     title: 'Digital Twin & Batería Hidráulica',
     subtitle: 'Laboratorio LINTI — UNLP',
     description: 'Modelado dinámico en Python para cisternas de 1400 m³, telemetría IoT y optimización de potencia con parque solar.',
-    link: 'https://www.linkedin.com/in/armando-pereira-2810a3278/'
+    link: 'https://github.com/pereiraarmando41-art/PPS-Gemelo-Digital-Bombeo'
   }
 ];
 
